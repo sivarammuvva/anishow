@@ -1,0 +1,97 @@
+body {
+  font-family: sans-serif;
+}
+
+input {
+  padding: 0.7rem 1rem;
+  background-color: white;
+  border-radius: 10rem;
+  border: 1px solid black;
+}
+
+button {
+  padding: 0.7rem 1rem;
+  border-radius: 10rem;
+  font-weight: bold;
+  border: none;
+}
+
+#submit,
+.activeTab {
+  background-color: royalblue;
+  color: white;
+}
+
+.input-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 5rem;
+  margin-bottom: 3rem;
+}
+
+.tabs {
+  width: 100%;
+  max-width: 600px;
+  border: 1px solid black;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  margin: 0 auto;
+  margin-bottom: 2rem;
+}
+
+.tabs > button {
+  flex: 1;
+  border-radius: 0.5rem;
+}
+
+#images-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  
+}
+
+.image-container {
+  width: 70vw;
+  height: 300px;
+  border: 1px solid black;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  gap: 2rem;
+  transition: opacity 0.3s ease;
+ 
+}
+
+
+.heading-container {
+  display: flex;
+  gap: 0.7rem;
+  align-items: center;
+}
+
+.heading-container > input {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.heading {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.image {
+  width: 50%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 1rem;
+}
