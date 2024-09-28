@@ -61,9 +61,45 @@ function showUnwatchedItems(e) {
   imagesContainer.append(...items);
 }
 
+function createOptionsContainer(e) {
+  const optionsContainer = document.createElement("div");
+  optionsContainer.className = "options-container";
+  optionsContainer.classList.add("hidden");
+
+  const deleteButton = document.createElement("button");
+  deleteButton.innerHTML =
+    '<i class="fa-solid fa-trash-can"></i><span>Delete</span>';
+  optionsContainer.appendChild(deleteButton);
+
+  return optionsContainer;
+}
+
+function showOptionsContainer(e) {
+  const imageContainer = e.currentTarget;
+  const optionsContainer =
+    imageContainer.getElementsByClassName("options-container")[0];
+  if (optionsContainer.classList.contains("hidden")) {
+    optionsContainer.classList.remove("hidden");
+  }
+}
+
+function hideOptionsContainer(e) {
+  const imageContainer = e.currentTarget;
+  const optionsContainer =
+    imageContainer.getElementsByClassName("options-container")[0];
+  if (!optionsContainer.classList.contains("hidden")) {
+    optionsContainer.classList.add("hidden");
+  }
+}
+
 function createImageContainer(title, url, checked) {
   const imageContainer = document.createElement("div");
   imageContainer.className = "image-container";
+  const optionsContainer = createOptionsContainer();
+  imageContainer.appendChild(optionsContainer);
+
+  imageContainer.addEventListener("mouseover", showOptionsContainer);
+  imageContainer.addEventListener("mouseout", hideOptionsContainer);
 
   const headingContainer = document.createElement("div");
   headingContainer.className = "heading-container";
@@ -123,5 +159,5 @@ sumbitButton.addEventListener("click", (e) => {
   imagesContainer.prepend(imageContainer);
 
   titleTag.value = "";
-  urlTag.value = "";
+  urlTag.value = "";
 });
