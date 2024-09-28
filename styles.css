@@ -55,7 +55,6 @@ button {
   flex-direction: column;
   align-items: center;
   gap: 2rem;
-  
 }
 
 .image-container {
@@ -68,10 +67,7 @@ button {
   align-items: center;
   padding: 1rem;
   gap: 2rem;
-  transition: opacity 0.3s ease;
- 
 }
-
 
 .heading-container {
   display: flex;
@@ -93,5 +89,5 @@ button {
   width: 50%;
   height: 100%;
   object-fit: cover;
-  border-radius: 1rem;
+  border-radius: 1rem;
 }

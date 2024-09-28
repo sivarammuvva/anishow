@@ -5,7 +5,8 @@ const allButton = document.getElementById("all");
 const watchedButton = document.getElementById("watched");
 const unwatchedButton = document.getElementById("unwatched");
 
-const data = [];
+const data = JSON.parse(localStorage.getItem("data")) || [];
+showAllItems();
 
 allButton.addEventListener("click", showAllItems);
 watchedButton.addEventListener("click", showWatchedItems);
@@ -18,9 +19,11 @@ function removeItemsOfImagesContainer() {
 }
 
 function showAllItems(e) {
-  e.target.className = "activeTab";
-  watchedButton.classList.remove("activeTab");
-  unwatchedButton.classList.remove("activeTab");
+  if (e) {
+    e.target.className = "activeTab";
+    watchedButton.classList.remove("activeTab");
+    unwatchedButton.classList.remove("activeTab");
+  }
 
   const items = data.map((item) => {
     return createImageContainer(item.title, item.url, item.isWatched);
@@ -43,12 +46,12 @@ function showWatchedItems(e) {
   removeItemsOfImagesContainer();
   imagesContainer.append(...items);
 }
+
 function showUnwatchedItems(e) {
   if (e) {
     e.target.className = "activeTab";
     allButton.classList.remove("activeTab");
     watchedButton.classList.remove("activeTab");
-
   }
   const unwatchedData = data.filter((item) => item.isWatched === false);
   const items = unwatchedData.map((item) => {
@@ -74,6 +77,8 @@ function createImageContainer(title, url, checked) {
 
     const idx = data.findIndex((item) => item.title === clickedItemTitle);
     data[idx].isWatched = value;
+
+    localStorage.setItem("data", JSON.stringify(data));
 
     if (watchedButton.classList.contains("activeTab")) {
       showWatchedItems();
@@ -111,10 +116,12 @@ sumbitButton.addEventListener("click", (e) => {
   };
   data.unshift(item);
 
+  localStorage.setItem("data", JSON.stringify(data));
+
   const imageContainer = createImageContainer(title, url);
 
   imagesContainer.prepend(imageContainer);
 
   titleTag.value = "";
-  urlTag.value = "";
+  urlTag.value = "";
 });
