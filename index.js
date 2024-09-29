@@ -61,6 +61,11 @@ function showUnwatchedItems(e) {
   imagesContainer.append(...items);
 }
 
+// [
+//   {title: 'naruto', url: '', isWatched: false},
+//   {title: 'aot', url: '', isWatched: false},
+// ]
+
 function createOptionsContainer(e) {
   const optionsContainer = document.createElement("div");
   optionsContainer.className = "options-container";
@@ -69,6 +74,17 @@ function createOptionsContainer(e) {
   const deleteButton = document.createElement("button");
   deleteButton.innerHTML =
     '<i class="fa-solid fa-trash-can"></i><span>Delete</span>';
+  deleteButton.addEventListener("click", (e) => {
+    /**
+     * 1. Find the title
+     * 2. Get the index of that title in data
+     * 3. Delete item at that index in data
+     */
+    const title =
+      e.currentTarget.parentNode.parentNode.getElementsByClassName("heading")[0]
+        .textContent;
+  });
+
   optionsContainer.appendChild(deleteButton);
 
   return optionsContainer;
